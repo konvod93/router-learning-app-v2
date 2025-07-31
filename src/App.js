@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from './hooks/useRouter'
 
-// Компонент ссылки
+// Компонент ссылки - исправленная версия
 const Link = ({ to, children, className = '', activeClassName = '' }) => {
-  const { currentPath, navigate } = useRouter();
-  const isActive = currentPath === to;
-  
   const handleClick = (e) => {
     e.preventDefault();
-    navigate(to);
+    // Используем прямое обновление URL и состояния
+    window.history.pushState({}, '', to);
+    window.dispatchEvent(new PopStateEvent('popstate'));
   };
+
+  // Проверяем активность ссылки
+  const isActive = window.location.pathname === to;
 
   return (
     <a 
