@@ -3,14 +3,8 @@ import Link from "./Link";
 
 // Главный компонент навигации
 const Navigation = () => {
-  const { currentPath } = useRouter();
-  
-  const isActive = (path) => {
-    if (path === '/' && currentPath === '/') return true;
-    if (path !== '/' && currentPath.startsWith(path)) return true;
-    return false;
-  };
-
+  const { currentPath } = useRouter();  
+// Определяем элементы навигации  
   const navItems = [
     { path: '/', label: 'Главная', icon: '🏠' },
     { path: '/about', label: 'О нас', icon: 'ℹ️' },
