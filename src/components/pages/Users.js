@@ -1,4 +1,3 @@
-import { useRouter } from "../../hooks/useRouter";
 
 // Компонент списка пользователей
 const Users = () => {

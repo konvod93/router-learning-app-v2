@@ -6,6 +6,7 @@ import About from './components/pages/About';
 import Users from './components/pages/Users';
 import UserDetail from './components/pages/UserDetail';
 import Contact from './components/Contact';
+import { RouterProvider } from './providers/RouterProvider';
 
 // Компонент страницы 404
 const NotFound = () => {
@@ -152,7 +153,12 @@ const Router = () => {
 
 // Главный компонент приложения
 const App = () => {
-  return <Router />;
+  // Инициализируем RouterProvider для управления маршрутизацией
+  return (
+    <RouterProvider>
+      <Router />
+    </RouterProvider>
+  );
 };
 
 export default App;
