@@ -5,17 +5,20 @@ export const useRouter = () => {
   const [currentPath, setCurrentPath] = useState(window.location.pathname);
   const [params, setParams] = useState({});
 
+  
   useEffect(() => {
-    const handlePopState = () => {
-      setCurrentPath(window.location.pathname);
-      parseParams(window.location.pathname);
-    };
+  const handlePopState = () => {
+    setCurrentPath(window.location.pathname);
+    parseParams(window.location.pathname);
+  };
 
-    window.addEventListener('popstate', handlePopState);
-    parseParams(currentPath);
+  window.addEventListener('popstate', handlePopState);
 
-    return () => window.removeEventListener('popstate', handlePopState);
-  }, [currentPath]);
+  // Инициализация параметров только один раз при маунте
+  parseParams(window.location.pathname);
+
+  return () => window.removeEventListener('popstate', handlePopState);
+}, []);
 
   const parseParams = (path) => {
     // Парсинг параметров из URL (например, /users/123)

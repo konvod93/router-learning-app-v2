@@ -11,6 +11,7 @@ const Contact = () => {
     if (formData.name && formData.message) {
       alert('Сообщение отправлено! Перенаправляем на главную...');
       navigate('/');
+      
     }
   };
 
@@ -77,5 +78,6 @@ const Contact = () => {
     </div>
   );
 };
+
 
 export default Contact
